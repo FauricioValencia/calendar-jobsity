@@ -41,8 +41,7 @@ export default handleActions(
     },
     DELETE_ALL_REMINDERS: (state, action) => {
       return { ...state, reminders: action.payload };
-    },
-
+    }
   },
   initialState
 );

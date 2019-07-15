@@ -2769,6 +2769,13 @@ concat-stream@^1.5.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
+config@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npm.taobao.org/config/download/config-3.2.0.tgz#9dc4f74770657b583f47a1209e52f3b0d0e531db"
+  integrity sha1-ncT3R3Ble1g/R6EgnlLzsNDlMds=
+  dependencies:
+    json5 "^1.0.1"
+
 confusing-browser-globals@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.7.tgz#5ae852bd541a910e7ffb2dbb864a2d21a36ad29b"

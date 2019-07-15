@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Modal, Button, Input, Select, TimePicker } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
-
+import { CITYS } from "../../Constants/citys";
 const { Option } = Select;
 const { TextArea } = Input;
 const format = "HH:mm";
@@ -35,7 +35,8 @@ function FormReminder({
         autosize={{ minRows: 2, maxRows: 3 }}
         onChange={e => setTextReminder(e.target.value)}
         value={textReminder && textReminder}
-        maxLength={25}
+        maxLength={30}
+        // onError={()=>textReminder.length>2 &&"mala perro"}
       />
       <div
         style={{
@@ -49,8 +50,10 @@ function FormReminder({
           style={{ width: 120 }}
           onChange={option => setCityReminder(option)}
         >
-          <Option value="cali">Cali</Option>
-          <Option value="bogota">Bogota</Option>
+          {CITYS.map((city, key) => {
+            const { name } = city;
+            return <Option key={key} value={city}>{name}</Option>;
+          })}
         </Select>
         <Select
           defaultValue={color ? color : " Color"}

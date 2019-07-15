@@ -9,18 +9,11 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import configureStore from "./Shared/Redux/configure_store.store";
 
-// * Styles
-
-import { ThemeProvider } from "react-jss";
-import Theme from "./Shared/Themes/";
-
 const store = configureStore({});
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider theme={Theme}>
-      <ReminderCalendar />
-    </ThemeProvider>
+    <ReminderCalendar />
   </Provider>,
   document.getElementById("root")
 );

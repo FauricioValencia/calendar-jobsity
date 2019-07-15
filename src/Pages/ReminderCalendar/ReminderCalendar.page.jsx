@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "antd";
+import moment from "moment";
 
 import { getWeather } from "../../helpers/Calendar/fetchApi.helpers";
 import Calendar from "../../Containers/Calendar/Calendar.component";
@@ -19,6 +20,7 @@ function ReminderCalendar({ dispatch, state }) {
   const [isModalFormReminder, setIsModalReminder] = useState(false);
   const [textReminder, setTextReminder] = useState("");
   const [timeReminder, setTimeReminder] = useState("");
+  const [timeMoment, setTimeMoment] = useState();
   const [cityReminder, setCityReminder] = useState();
   const [selectDay, setSelectDay] = useState();
   const [color, setColor] = useState();
@@ -32,7 +34,8 @@ function ReminderCalendar({ dispatch, state }) {
       cityReminder,
       selectDay,
       color,
-      weather
+      weather,
+      timeMilliseconds: timeMoment
     };
     if (isCreate) {
       dispatch(createReminder({ ...body, id: reminders.length + 1 }));
@@ -68,6 +71,7 @@ function ReminderCalendar({ dispatch, state }) {
       setCityReminder(reminder.cityReminder);
       setIdReminder(reminder.id);
       setColor(reminder.color);
+      setTimeMoment(reminder.timeMoment);
     }
   };
 
@@ -86,7 +90,13 @@ function ReminderCalendar({ dispatch, state }) {
         textReminder={textReminder}
         setTextReminder={text => setTextReminder(text)}
         timeReminder={timeReminder}
-        setTimeReminder={time => setTimeReminder(time)}
+        setTimeReminder={(time, timeMoment) => {
+          setTimeReminder(time);
+          setTimeMoment(
+            moment(timeMoment).diff(moment().startOf("day"), "seconds")
+          );
+          console.log(moment(timeMoment).diff(moment().startOf("day"), "seconds"));
+        }}
         cityReminder={cityReminder}
         setCityReminder={city => {
           console.log("julian", city);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./calendar.css";
 import moment from "moment";
 
@@ -116,14 +116,14 @@ function Calendar(props) {
     );
   }
   const filterRemindersDay = day =>
-    reminders.filter(element => element.selectDay == day);
+    reminders.filter(element => element.selectDay === day);
   const updateReminder = (d, reminder) => {
     setIsCreate(false);
     openModalReminder(d, reminder);
   };
   let daysInMonth = [];
   for (let d = 1; d <= dayInMonth(); d++) {
-    let className = d == currentDay() ? "day current-day" : "day";
+    let className = d === currentDay() ? "day current-day" : "day";
     let reminders = filterRemindersDay(d);
     daysInMonth.push(
       <DayCalendar

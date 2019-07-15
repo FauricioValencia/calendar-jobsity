@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { Button, Icon } from "antd";
 import "./DayCalendar.styles.css";
 function DayCalendar({
@@ -21,38 +21,40 @@ function DayCalendar({
     >
       <span className="single-day">{d}</span>
       <div className="reminders-container">
-        {reminders.map((reminder, index) => {
-          const { textReminder, color, id } = reminder;
-          return (
-            <div
-              onMouseEnter={() => setIsHoverDeleteReminder(true)}
-              onMouseLeave={() => setIsHoverDeleteReminder(false)}
-              key={index}
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
-              <p
+        {reminders
+          .sort((a, b) => a.timeMilliseconds - b.timeMilliseconds)
+          .map((reminder, index) => {
+            const { color, id, timeReminder } = reminder;
+            return (
+              <div
+                onMouseEnter={() => setIsHoverDeleteReminder(true)}
+                onMouseLeave={() => setIsHoverDeleteReminder(false)}
+                key={index}
                 style={{
-                  backgroundColor: color,
-                  marginBottom: 0,
-                  width: "100%"
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center"
                 }}
-                className="reminder"
-                onClick={() => updateReminder(d, reminder)}
               >
-                {" "}
-                Reminder {index + 1}
-              </p>
-              {isHoverDeleteReminder && (
-                <Icon type="delete" onClick={() => deleteReminder(id)} />
-              )}
-            </div>
-          );
-        })}
+                <p
+                  style={{
+                    backgroundColor: color,
+                    marginBottom: 0,
+                    width: "100%"
+                  }}
+                  className="reminder"
+                  onClick={() => updateReminder(d, reminder)}
+                >
+                  {" "}
+                  Reminder {timeReminder}
+                </p>
+                {isHoverDeleteReminder && (
+                  <Icon type="delete" onClick={() => deleteReminder(id)} />
+                )}
+              </div>
+            );
+          })}
       </div>
       {isHoverNewReminder && (
         <Button
@@ -61,7 +63,6 @@ function DayCalendar({
             setIsCreate();
             openModalReminder();
           }}
-          type="primary"
           className="container-new-reminder"
           block={true}
         >

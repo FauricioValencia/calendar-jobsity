@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Modal, Button, Input, Select, TimePicker } from "antd";
+import { Modal, Input, Select, TimePicker } from "antd";
 import "antd/dist/antd.css";
 import moment from "moment";
 import { CITYS } from "../../Constants/citys";
@@ -20,11 +20,12 @@ function FormReminder({
   setCityReminder,
   color,
   setColor,
-  isCreate
+  isCreate,
+  weather
 }) {
   return (
     <Modal
-      title="Create Reminder"
+      title={isCreate ? "Create Reminder" : "Update Reminder"}
       visible={isModalFormReminder}
       onOk={createReminder}
       onCancel={cancelReminder}
@@ -36,6 +37,7 @@ function FormReminder({
         onChange={e => setTextReminder(e.target.value)}
         value={textReminder && textReminder}
         maxLength={30}
+        required
         // onError={()=>textReminder.length>2 &&"mala perro"}
       />
       <div
@@ -49,15 +51,21 @@ function FormReminder({
           defaultValue={cityReminder ? cityReminder : "Select city"}
           style={{ width: 120 }}
           onChange={option => setCityReminder(option)}
+          required
         >
           {CITYS.map((city, key) => {
             const { name } = city;
-            return <Option key={key} value={city}>{name}</Option>;
+            return (
+              <Option key={key} value={city}>
+                {name}
+              </Option>
+            );
           })}
         </Select>
+        <p>{weather} c</p>
         <Select
           defaultValue={color ? color : " Color"}
-          style={{ width: 120, background: "yellow" }}
+          style={{ width: 120 }}
           onChange={option => setColor(option)}
         >
           <Option value="red" style={{ backgroundColor: "red" }}>

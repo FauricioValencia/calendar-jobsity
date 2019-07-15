@@ -8,7 +8,7 @@ export const {
   updateReminder,
   deleteReminder,
   deleteAllReminders,
-  getWeather
+  deleteRemindersDay
 } = createActions({
   CREATE_REMINDER: body => body,
   UPDATE_REMINDER: (reminders, body) => {
@@ -27,5 +27,9 @@ export const {
   },
   DELETE_ALL_REMINDERS: () => {
     return [];
+  },
+  DELETE_REMINDERS_DAY: (reminders, day) => {
+    let newReminders = reminders.filter(reminder => reminder.selectDay !== day);
+    return newReminders;
   }
 });

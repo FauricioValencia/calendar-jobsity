@@ -6,7 +6,13 @@ import moment from "moment";
 import DayCalendar from "../../Components/Calendar/DayCalendar/DayCalendar.component";
 
 function Calendar(props) {
-  const { openModalReminder, state, setIsCreate, deleteReminder } = props;
+  const {
+    openModalReminder,
+    state,
+    setIsCreate,
+    deleteReminder,
+    deleteReminderSpecifDay
+  } = props;
   const {
     reminders: { reminders }
   } = state;
@@ -134,6 +140,7 @@ function Calendar(props) {
         openModalReminder={() => openModalReminder(d)}
         updateReminder={(d, reminder) => updateReminder(d, reminder)}
         deleteReminder={id => deleteReminder(id)}
+        deleteReminderSpecifDay={day => deleteReminderSpecifDay(day)}
       />
     );
   }
@@ -170,8 +177,8 @@ function Calendar(props) {
         <thead>
           <tr className="calendar-header">
             <td colSpan="20">
-          <MonthNav />
-          </td>
+              <MonthNav />
+            </td>
           </tr>
         </thead>
         <tbody>

@@ -8,18 +8,35 @@ function DayCalendar({
   setIsCreate,
   openModalReminder,
   updateReminder,
-  deleteReminder
+  deleteReminder,
+  deleteReminderSpecifDay
 }) {
   const [isHoverNewReminder, setIsHoverNewReminder] = useState(false);
   const [isHoverDeleteReminder, setIsHoverDeleteReminder] = useState(false);
+  const [isHoverDeleteAllReminders, setIsHoverDeleteAllReminders] = useState(
+    false
+  );
   return (
     <td
       key={d}
       className={className}
-      onMouseEnter={() => setIsHoverNewReminder(true)}
-      onMouseLeave={() => setIsHoverNewReminder(false)}
+      onMouseEnter={() => {
+        setIsHoverNewReminder(true);
+        setIsHoverDeleteAllReminders(true);
+      }}
+      onMouseLeave={() => {
+        setIsHoverNewReminder(false);
+        setIsHoverDeleteAllReminders(false);
+      }}
     >
       <span className="single-day">{d}</span>
+      {isHoverDeleteAllReminders && (
+        <Icon
+          className="anticon-delete-epa"
+          type="delete"
+          onClick={() => deleteReminderSpecifDay(d)}
+        />
+      )}
       <div className="reminders-container">
         {reminders
           .sort((a, b) => a.timeMilliseconds - b.timeMilliseconds)

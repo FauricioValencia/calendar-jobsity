@@ -10,7 +10,8 @@ import {
   createReminder,
   updateReminder,
   deleteReminder,
-  deleteAllReminders
+  deleteAllReminders,
+  deleteRemindersDay
 } from "../../Shared/Redux/Actions/reminder.action";
 
 function ReminderCalendar({ dispatch, state }) {
@@ -59,7 +60,7 @@ function ReminderCalendar({ dispatch, state }) {
   };
 
   const deleteAll = () => dispatch(deleteAllReminders());
-
+  const deleteReminderSpecifDay = day => dispatch(deleteRemindersDay(reminders,day));
   const cancelReminder = () => setIsModalReminder(false);
 
   const openModalReminder = (day, reminder = {}) => {
@@ -82,6 +83,7 @@ function ReminderCalendar({ dispatch, state }) {
         state={state}
         setIsCreate={isCreate => setIsCreate(isCreate)}
         deleteReminder={id => deleteRe(id)}
+        deleteReminderSpecifDay={day => deleteReminderSpecifDay(day)}
       />
       <FormReminder
         isModalFormReminder={isModalFormReminder}
@@ -95,7 +97,9 @@ function ReminderCalendar({ dispatch, state }) {
           setTimeMoment(
             moment(timeMoment).diff(moment().startOf("day"), "seconds")
           );
-          console.log(moment(timeMoment).diff(moment().startOf("day"), "seconds"));
+          console.log(
+            moment(timeMoment).diff(moment().startOf("day"), "seconds")
+          );
         }}
         cityReminder={cityReminder}
         setCityReminder={city => {

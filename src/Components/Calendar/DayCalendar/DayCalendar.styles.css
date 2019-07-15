@@ -30,6 +30,14 @@
 .ant-btn-block {
   position: absolute !important;
 }
-.icon-delete{
-    
+.icon-delete {
+}
+.anticon-delete-epa {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: darkred;
+  border-radius: 25px;
+  padding: 10px;
+  color: white;
 }

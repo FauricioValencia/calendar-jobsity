@@ -1,0 +1,35 @@
+.single-day {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+.reminders-container {
+  width: 100%;
+}
+.reminders-container:hover {
+  background-color: skyblue;
+}
+.reminder {
+  color: white;
+}
+.reminder:hover {
+  background-color: skyblue !important;
+}
+.container-new-reminder {
+  text-align: center;
+  width: 100%;
+  background-color: olivedrab;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.ant-btn {
+  bottom: 0 !important;
+  left: 0 !important;
+}
+.ant-btn-block {
+  position: absolute !important;
+}
+.icon-delete{
+    
+}

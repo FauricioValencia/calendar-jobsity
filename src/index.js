@@ -1,10 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import ReminderCalendar from "./Pages/ReminderCalendar/ReminderCalendar.page";
+import * as serviceWorker from "./serviceWorker";
+
+// !REDUX
+import { Provider } from "react-redux";
+import configureStore from "./Shared/Redux/configure_store.store";
+
+// * Styles
+
+import { ThemeProvider } from "react-jss";
+import Theme from "./Shared/Themes/";
+
+const store = configureStore({});
+
+ReactDOM.render(
+  <Provider store={store}>
+    <ThemeProvider theme={Theme}>
+      <ReminderCalendar />
+    </ThemeProvider>
+  </Provider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

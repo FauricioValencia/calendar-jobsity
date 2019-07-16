@@ -69,7 +69,7 @@ function Calendar(props) {
   const SelectList = props => {
     let popup = props.data.map((data, key) => {
       return (
-        <div key={data}>
+        <div key={key}>
           <a
             href="#"
             onClick={e => {
@@ -133,6 +133,7 @@ function Calendar(props) {
     let reminders = filterRemindersDay(d);
     daysInMonth.push(
       <DayCalendar
+        key={d}
         d={d}
         className={className}
         reminders={reminders}
@@ -165,7 +166,7 @@ function Calendar(props) {
 
   let trElems = rows.map((d, i) => {
     return (
-      <tr key={i * 100} className="container-days">
+      <tr key={i} className="container-days">
         {d}
       </tr>
     );

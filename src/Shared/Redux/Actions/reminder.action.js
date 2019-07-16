@@ -1,8 +1,4 @@
 import { createActions } from "redux-actions";
-
-// import config from "config";
-// const KEYWAHTER= config.get("keyWhater");
-
 export const {
   createReminder,
   updateReminder,

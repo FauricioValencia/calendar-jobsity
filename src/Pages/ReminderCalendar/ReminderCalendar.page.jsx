@@ -3,7 +3,7 @@ import { Button } from "antd";
 import moment from "moment";
 
 import { getWeather } from "../../helpers/Calendar/fetchApi.helpers";
-import Calendar from "../../Containers/Calendar/Calendar.component";
+import Calendar from "../../Containers/Calendar/Calendar.container";
 import FormReminder from "../../Components/FormReminder/FormReminder.component";
 import Connect from "../../Hoc/Connect.hoc";
 import {
@@ -97,13 +97,9 @@ function ReminderCalendar({ dispatch, state }) {
           setTimeMoment(
             moment(timeMoment).diff(moment().startOf("day"), "seconds")
           );
-          console.log(
-            moment(timeMoment).diff(moment().startOf("day"), "seconds")
-          );
         }}
         cityReminder={cityReminder}
         setCityReminder={city => {
-          console.log("julian", city);
           setCityReminder(city.name);
           getWeatherCity(city);
         }}

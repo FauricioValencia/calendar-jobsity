@@ -5,6 +5,8 @@
 }
 .reminders-container {
   width: 100%;
+  overflow: scroll;
+  max-height: 50%;
 }
 .reminders-container:hover {
   background-color: skyblue;

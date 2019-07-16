@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./calendar.css";
 import moment from "moment";
 
@@ -17,15 +17,9 @@ function Calendar(props) {
     reminders: { reminders }
   } = state;
   const weekdays = moment.weekdays();
-  const months = moment.months();
-  const [previusMommentContext, setPreviusUseMomentContext] = useState(
-    moment()
-  );
-  const [nextMommentContext, setNextUseMomentContext] = useState(moment());
-  const [mommentContext, setUseMomentContext] = useState(moment());
-  const [showMonthPopup, setShowMonthPopup] = useState(false);
+  const previusMommentContext = moment();
+  const mommentContext = moment();
 
-  const month = () => mommentContext.format("MMMM");
   const dayInMonth = () => mommentContext.daysInMonth();
   const daysInPreviosMonth = () => previusMommentContext.daysInMonth();
   const currentDay = () => mommentContext.format("D");
@@ -45,53 +39,6 @@ function Calendar(props) {
       .format("d");
     return lastDays;
   };
-  const changeMonth = (e, month) => {
-    setShowMonthPopup(!showMonthPopup);
-  };
-
-  const setMonth = month => {
-    blanks = [];
-    let monthNo = months.indexOf(month);
-    let dateContext = Object.assign({}, mommentContext);
-    let finaDateContext = moment(dateContext).set("months", monthNo);
-    // let previusMonth = moment(dateContext).set("months", monthNo - 1);
-    // let nextMonth = moment(dateContext).set("months", monthNo + 1);
-
-    // setPreviusUseMomentContext(previusMonth);
-    setUseMomentContext(finaDateContext);
-    // setNextUseMomentContext(nextMonth);
-  };
-  const onSelectiOnchange = (e, data) => {
-    setMonth(data);
-    props.onMonthChange && props.onMonthChange();
-  };
-
-  const SelectList = props => {
-    let popup = props.data.map((data, key) => {
-      return (
-        <div key={key}>
-          <a
-            href="#"
-            onClick={e => {
-              onSelectiOnchange(e, data);
-            }}
-          >
-            {data}
-          </a>
-        </div>
-      );
-    });
-    return <div className="month-popup">{popup}</div>;
-  };
-
-  const MonthNav = () => {
-    return (
-      <span className="label.month" onClick={e => changeMonth(e, month)}>
-        {month()}
-        {showMonthPopup && <SelectList data={months} />}
-      </span>
-    );
-  };
 
   const weekNames = weekdays.map((day, key) => {
     return (
@@ -101,10 +48,8 @@ function Calendar(props) {
     );
   });
 
-  //! parte para hacer los dias del mes.
   let blanks = [];
   for (let i = 0; i < firstDayOfMonth(); i++) {
-    // console.log('firstDayOfMonth: ', firstDayOfMonth());
     blanks.push(
       <td key={i} className="empty-slot">
         <span className="single-day">{daysInPreviosMonth() - i}</span>
@@ -175,13 +120,7 @@ function Calendar(props) {
   return (
     <div className="calendar-container">
       <table className="calendar">
-        <thead>
-          <tr className="calendar-header">
-            <td colSpan="20">
-              <MonthNav />
-            </td>
-          </tr>
-        </thead>
+        <thead />
         <tbody>
           <tr className="weekDays">{weekNames}</tr>
           {trElems}

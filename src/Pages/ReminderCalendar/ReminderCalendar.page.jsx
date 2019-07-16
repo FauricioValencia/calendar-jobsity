@@ -47,15 +47,11 @@ function ReminderCalendar({ dispatch, state }) {
   };
 
   const deleteRe = id => {
-    console.log("deleteREminder", id);
     dispatch(deleteReminder(reminders, id));
   };
 
   const getWeatherCity = async city => {
-    console.log("city", city);
-    console.log("city id", city.id);
     let weatherCity = await getWeather(city.id);
-    console.log("weather city: ", weatherCity.main.temp);
     setWeather(weatherCity.main.temp);
   };
 

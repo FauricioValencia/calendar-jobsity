@@ -40,6 +40,10 @@ function FormReminder({
         required
         // onError={()=>textReminder.length>2 &&"mala perro"}
       />
+      <p>{textReminder ? textReminder.length : 0}</p>
+      {textReminder && textReminder.length === 30 && (
+        <p style={{ color: "red" }}>Remember that only put 30 characters</p>
+      )}
       <div
         style={{
           marginTop: 20,
@@ -73,6 +77,9 @@ function FormReminder({
           </Option>
           <Option value="blue" style={{ backgroundColor: "blue" }}>
             blue
+          </Option>
+          <Option value="green" style={{ backgroundColor: "green" }}>
+            green
           </Option>
         </Select>
         <TimePicker

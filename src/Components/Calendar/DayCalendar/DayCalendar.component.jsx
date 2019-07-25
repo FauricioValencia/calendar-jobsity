@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Button, Icon } from "antd";
 import "./DayCalendar.styles.css";
 function DayCalendar({
@@ -88,6 +89,28 @@ function DayCalendar({
       )}
     </td>
   );
+}
+
+DayCalendar.propTypes = {
+  d: PropTypes.number,
+  className: PropTypes.string,
+  reminders: PropTypes.array,
+  setIsCreate: PropTypes.func,
+  openModalReminder: PropTypes.func,
+  updateReminder: PropTypes.func,
+  deleteReminder: PropTypes.func,
+  deleteReminderSpecifDay: PropTypes.func
+};
+
+DayCalendar.defaultProps={
+  d: 0,
+  className: "{}",
+  reminders: [],
+  setIsCreate: ()=>{},
+  openModalReminder: ()=>{},
+  updateReminder: ()=>{},
+  deleteReminder: ()=>{},
+  deleteReminderSpecifDay: ()=>{}
 }
 
 export default DayCalendar;

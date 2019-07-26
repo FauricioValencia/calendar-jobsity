@@ -1,3 +1,5 @@
+@import "../../Assets/Styles/colors.scss";
+
 .calendar-container,
 .calendar,
 .calendar-header,
@@ -12,7 +14,7 @@ tr {
 }
 
 .calendar {
-  background-color: white;
+  background-color: $white;
   border-spacing: 0;
   border-collapse: collapse;
   width: 100%;
@@ -46,7 +48,7 @@ tr {
 }
 .week-day {
   font-size: 0.8em;
-  color: white;
+  color: $white;
 }
 
 .day {
@@ -63,19 +65,19 @@ tr {
 }
 
 .current-day {
-  background-color: #4285f4;
+  background-color: $backgroundColorWeek;
   width: 28px;
   height: 28px;
   line-height: 28px;
   border-radius: 2%;
-  color: white;
+  color: $white;
 }
 
 .month-popup {
   position: absolute;
   padding: 5px;
-  background: white;
-  border: 2px solid skyblue;
+  background: $white;
+  border: 2px solid $skyBlue;
 }
 
 .month-popup div {
@@ -97,7 +99,7 @@ tr {
   cursor: pointer;
 }
 .weekDays {
-  background-color: #2f74b5;
+  background-color: $colorWeekDays;
 }
 .container-days {
   position: relative;
@@ -114,13 +116,13 @@ tr {
   width: 100%;
 }
 .reminders-container:hover {
-  background-color: skyblue;
+  background-color: $skyBlue;
 }
 .reminder {
-  color: white;
+  color: $white;
 }
 .reminder:hover {
-  background-color: skyblue !important;
+  background-color: $skyBlue !important;
 }
 .container-new-reminder {
   
@@ -128,7 +130,7 @@ tr {
   bottom: 0;
   text-align: center;
   width: 100%;
-  background-color: olivedrab;
+  background-color: $olivedrab;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -139,3 +141,4 @@ tr {
 .container-new-reminder {
   visibility: visible;
 } */
+

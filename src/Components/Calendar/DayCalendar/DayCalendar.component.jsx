@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Icon } from "antd";
-import "./DayCalendar.styles.css";
+import "./DayCalendar.styles.scss";
+
 function DayCalendar({
   d,
   className,
@@ -30,7 +31,7 @@ function DayCalendar({
         setIsHoverDeleteAllReminders(false);
       }}
     >
-      <span className="single-day">{d}</span>
+      <span className="singleDay">{d}</span>
       {isHoverDeleteAllReminders && (
         <Icon
           className="anticon-delete-epa"

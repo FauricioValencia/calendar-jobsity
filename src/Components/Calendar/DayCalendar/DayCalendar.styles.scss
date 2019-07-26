@@ -1,4 +1,5 @@
-.single-day {
+@import "../../../Assets/Styles/colors.scss";
+.singleDay {
   position: absolute;
   top: 5px;
   left: 10px;
@@ -9,18 +10,18 @@
   max-height: 50%;
 }
 .reminders-container:hover {
-  background-color: skyblue;
+  background-color: $skyBlue;
 }
 .reminder {
-  color: white;
+  color: $white;
 }
 .reminder:hover {
-  background-color: skyblue !important;
+  background-color: $skyBlue !important;
 }
 .container-new-reminder {
   text-align: center;
   width: 100%;
-  background-color: olivedrab;
+  background-color: $olivedrab;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -32,14 +33,12 @@
 .ant-btn-block {
   position: absolute !important;
 }
-.icon-delete {
-}
 .anticon-delete-epa {
   position: absolute;
   top: 0;
   right: 0;
-  background: darkred;
+  background: $deleteReminders;
   border-radius: 25px;
   padding: 10px;
-  color: white;
+  color: $white;
 }

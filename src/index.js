@@ -9,6 +9,10 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import configureStore from "./Shared/Redux/configure_store.store";
 
+// ? Styles
+
+import "./Assets/Styles/global.scss"
+
 const store = configureStore({});
 
 ReactDOM.render(
